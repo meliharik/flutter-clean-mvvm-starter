@@ -1,0 +1,47 @@
+# Build configuration for code generation
+#
+# WHY: Configure build_runner behavior
+# - Control which files to generate
+# - Optimize build performance
+# - Configure generator options
+
+targets:
+  $default:
+    builders:
+      # Freezed configuration
+      freezed:
+        options:
+          # Generate mutable classes (optional)
+          # mutable: false
+        generate_for:
+          - lib/**/*.dart
+
+      # JSON Serializable configuration
+      json_serializable:
+        options:
+          # Use explicit_to_json to handle nested objects
+          explicit_to_json: true
+          # Create factory constructor named fromJson
+          any_map: false
+          # Check for nulls
+          checked: true
+          # Create Map with String keys
+          create_factory: true
+          create_to_json: true
+        generate_for:
+          - lib/**/*.dart
+
+      # Injectable configuration
+      injectable_generator:
+        options:
+          # Auto-register classes
+          auto_register: true
+        generate_for:
+          - lib/core/di/injection.dart
+
+      # Riverpod generator configuration
+      riverpod_generator:
+        options:
+          # Generate providers
+        generate_for:
+          - lib/**/*.dart
