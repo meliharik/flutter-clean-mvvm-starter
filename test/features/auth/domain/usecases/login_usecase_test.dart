@@ -39,7 +39,7 @@ void main() {
       when(() => mockRepository.login(
             email: any(named: 'email'),
             password: any(named: 'password'),
-          )).thenAnswer((_) async => Right(tUser));
+          )).thenAnswer((_) async => const Right(tUser));
 
       // ACT - Execute the use case
       final result = await loginUseCase(
@@ -68,7 +68,7 @@ void main() {
       when(() => mockRepository.login(
             email: any(named: 'email'),
             password: any(named: 'password'),
-          )).thenAnswer((_) async => Right(tUser));
+          )).thenAnswer((_) async => const Right(tUser));
 
       // ACT
       await loginUseCase(
